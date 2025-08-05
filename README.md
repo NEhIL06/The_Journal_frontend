@@ -2,6 +2,7 @@ The Journal App
 Welcome to The Journal App, a sleek and modern frontend for your personal journaling application, built with Next.js. JournalApp provides a seamless, intuitive interface for capturing your thoughts, reflections, and memories with style and ease. Powered by the latest web technologies, this app is designed to be fast, responsive, and visually stunning.
 ✨ Features
 
+
 Beautiful UI: Crafted with a clean, minimalist design using the Geist font family for a premium look and feel.
 Real-Time Updates: Edit your journal entries and see changes instantly with Next.js's hot-reloading.
 Responsive Design: Optimized for all devices, from desktops to mobile phones.
