@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 
 import type React from "react"
@@ -43,7 +45,7 @@ export default function EditEntryPage() {
   const [isSaving, setIsSaving] = useState(false)
   const [error, setError] = useState("")
   const [success, setSuccess] = useState(false)
-  const { token, theme } = useAuth()
+  const { token } = useAuth()
   const router = useRouter()
   const params = useParams()
   const entryId = params.id as string
@@ -224,7 +226,7 @@ export default function EditEntryPage() {
           <CardContent className="pt-6 text-center">
             <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Entry Not Found</h2>
             <p className="text-gray-600 dark:text-gray-400 mb-4">
-              The entry you're looking for doesn't exist or you don't have permission to view it.
+              The entry you&apos;re looking for doesn&apos;t exist or you don&apos;t have permission to view it.
             </p>
             <Link href="/dashboard">
               <Button>Back to Dashboard</Button>

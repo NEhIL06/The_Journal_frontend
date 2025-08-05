@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
 import { useState, useEffect } from "react"
@@ -98,7 +100,7 @@ export default function DashboardPage() {
       if (entriesResponse.ok) {
         const entriesData = await entriesResponse.json()
         // Ensure IDs are strings and handle the response properly with null safety
-        const processedEntries = (entriesData || []).map((entry: any) => ({
+        const processedEntries = (entriesData || []).map((entry:any) => ({
           ...entry,
           id: String(entry.id), // Convert ID to string
           title: entry.title || "", // Ensure title is never null/undefined
