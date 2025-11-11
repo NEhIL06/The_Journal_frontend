@@ -40,7 +40,7 @@ export default function WritePage() {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/journal", {
+      const response = await fetch("https://the-journal-9iyg.onrender.com/journal", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

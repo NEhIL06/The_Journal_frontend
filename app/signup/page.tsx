@@ -44,7 +44,7 @@ export default function SignupPage() {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/public/SignUp", {
+      const response = await fetch("https://the-journal-9iyg.onrender.com/public/SignUp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

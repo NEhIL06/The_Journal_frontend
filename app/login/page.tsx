@@ -30,7 +30,7 @@ export default function LoginPage() {
     setIsLoading(true)
 
     try {
-      const response = await fetch("http://localhost:8080/public/Login", {
+      const response = await fetch("/public/Login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -63,7 +63,7 @@ export default function ProfilePage() {
         updateData.Password = formData.Password
       }
 
-      const response = await fetch("http://localhost:8080/user", {
+      const response = await fetch("https://the-journal-9iyg.onrender.com/user", {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -99,7 +99,7 @@ export default function ProfilePage() {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/user", {
+      const response = await fetch("https://the-journal-9iyg.onrender.com/user", {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

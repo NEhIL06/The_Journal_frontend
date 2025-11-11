@@ -86,7 +86,7 @@ export function EditEntryModal({ entryId, isOpen, onClose, onEntryUpdated, onEnt
     setError("")
 
     try {
-      const response = await fetch(`http://localhost:8080/journal/id/${entryId}`, {
+      const response = await fetch(`https://the-journal-9iyg.onrender.com/journal/id/${entryId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -122,7 +122,7 @@ export function EditEntryModal({ entryId, isOpen, onClose, onEntryUpdated, onEnt
     }
 
     try {
-      const response = await fetch(`http://localhost:8080/journal/id/${entryId}`, {
+      const response = await fetch(`https://the-journal-9iyg.onrender.com/journal/id/${entryId}`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -157,7 +157,7 @@ export function EditEntryModal({ entryId, isOpen, onClose, onEntryUpdated, onEnt
     setError("")
 
     try {
-      const response = await fetch(`http://localhost:8080/journal/id/${entryId}`, {
+      const response = await fetch(`https://the-journal-9iyg.onrender.com/journal/id/${entryId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

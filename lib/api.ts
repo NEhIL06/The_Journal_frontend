@@ -13,6 +13,8 @@ export const JournalEntriesSchema = z.array(JournalEntrySchema)
 
 export type JournalEntry = z.infer<typeof JournalEntrySchema>
 
+export const baseUrl = "https://the-journal-9iyg.onrender.com";
+
 interface ApiOptions {
   retries?: number
   timeout?: number

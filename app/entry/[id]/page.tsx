@@ -63,7 +63,7 @@ export default function EditEntryPage() {
 
   const fetchEntry = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/journal/id/${entryId}`, {
+      const response = await fetch(`https://the-journal-9iyg.onrender.com/journal/id/${entryId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -97,7 +97,7 @@ export default function EditEntryPage() {
     }
 
     try {
-      const response = await fetch(`http://localhost:8080/journal/id/${entryId}`, {
+      const response = await fetch(`https://the-journal-9iyg.onrender.com/journal/id/${entryId}`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -130,7 +130,7 @@ export default function EditEntryPage() {
     }
 
     try {
-      const response = await fetch(`http://localhost:8080/journal/id/${entryId}`, {
+      const response = await fetch(`https://the-journal-9iyg.onrender.com/journal/id/${entryId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

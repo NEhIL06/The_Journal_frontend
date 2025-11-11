@@ -39,6 +39,8 @@ import { ErrorBoundary } from "@/components/error-boundary"
 import { DashboardSkeleton } from "@/components/skeleton"
 import { EditEntryModal } from "@/components/edit-entry-modal"
 
+import { baseUrl } from "@/lib/api"
+
 interface JournalEntry {
   id: string | number
   title: string
@@ -89,7 +91,7 @@ export default function DashboardPage() {
 
     try {
       // Fetch entries
-      const entriesResponse = await fetch("http://localhost:8080/journal", {
+      const entriesResponse = await fetch("https://the-journal-9iyg.onrender.com/journal", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -114,7 +116,7 @@ export default function DashboardPage() {
 
       // Fetch greeting
       try {
-        const greetingResponse = await fetch("http://localhost:8080/user", {
+        const greetingResponse = await fetch("https://the-journal-9iyg.onrender.com/user", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -153,7 +155,7 @@ export default function DashboardPage() {
     if (!confirm("Are you sure you want to delete this entry?")) return
 
     try {
-      const response = await fetch(`http://localhost:8080/journal/id/${id}`, {
+      const response = await fetch(`https://the-journal-9iyg.onrender.com/journal/id/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
