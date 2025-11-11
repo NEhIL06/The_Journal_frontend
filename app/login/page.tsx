@@ -30,7 +30,7 @@ export default function LoginPage() {
     setIsLoading(true)
 
     try {
-      const response = await fetch("/public/Login", {
+      const response = await fetch("https://the-journal-9iyg.onrender.com/public/Login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
