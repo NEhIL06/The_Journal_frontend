@@ -33,7 +33,7 @@ export class ApiClient {
   private baseUrl: string
   private defaultOptions: ApiOptions
 
-  constructor(baseUrl = "http://localhost:8080", options: ApiOptions = {}) {
+  constructor(baseUrl = "https://the-journal-9iyg.onrender.com", options: ApiOptions = {}) {
     this.baseUrl = baseUrl
     this.defaultOptions = { retries: 3, timeout: 10000, ...options }
   }
