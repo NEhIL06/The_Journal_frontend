@@ -2,6 +2,14 @@
 
 # dependencies
 /node_modules
+.npm-cache/
+angular-frontend/.angular/
+angular-frontend/coverage/
+angular-frontend/dist/
+backend/**/*.log
+backend/**/target/
+angular-frontend/.vscode/
+backend/.idea/
 /.pnp
 .pnp.js
 .yarn/install-state.gz

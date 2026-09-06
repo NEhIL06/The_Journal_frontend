@@ -1,0 +1,44 @@
+<app-header />
+<div class="page-shell container narrow-page">
+  <a class="back-link" routerLink="/journal">← Back to journal</a>
+  <section class="editor-card" [attr.aria-busy]="loading || saving">
+    <div class="editor-heading">
+      <span class="eyebrow">{{ mode === 'edit' ? 'Revise a memory' : 'A fresh page' }}</span>
+      <h1>{{ mode === 'edit' ? 'Edit your entry' : 'Write what is on your mind' }}</h1>
+      <p>{{ mode === 'edit' ? 'Make the words feel true to you.' : 'There is no right way to begin. Just start where you are.' }}</p>
+    </div>
+
+    @if (errorMessage) { <app-status-message type="error" [message]="errorMessage" /> }
+    @if (successMessage) {
+      <app-status-message type="success" [message]="successMessage" />
+      <a class="text-link success-link" routerLink="/journal">Return to your journal →</a>
+    }
+
+    @if (loading) {
+      <div class="editor-loading" role="status"><span class="spinner"></span> Loading entry…</div>
+    } @else {
+      <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <div class="form-field">
+          <div class="label-row"><label for="title">Title</label><span>{{ form.controls.title.value.length }}/100</span></div>
+          <input id="title" class="title-input" formControlName="title" placeholder="Give this moment a name" />
+          @if (form.controls.title.invalid && (submitted || form.controls.title.touched)) {
+            <span class="field-error">Add a title of up to 100 characters.</span>
+          }
+        </div>
+        <div class="form-field">
+          <div class="label-row"><label for="content">Your entry</label><span>{{ form.controls.content.value.length }}/5000</span></div>
+          <textarea id="content" formControlName="content" rows="15" placeholder="Today I noticed…"></textarea>
+          @if (form.controls.content.invalid && (submitted || form.controls.content.touched)) {
+            <span class="field-error">Write something, up to 5,000 characters.</span>
+          }
+        </div>
+        <div class="editor-actions">
+          <a class="button button-secondary" routerLink="/journal">Cancel</a>
+          <button class="button button-primary" type="submit" [disabled]="saving">
+            @if (saving) { <span class="spinner" aria-hidden="true"></span> Saving… } @else { {{ mode === 'edit' ? 'Update entry' : 'Save entry' }} }
+          </button>
+        </div>
+      </form>
+    }
+  </section>
+</div>

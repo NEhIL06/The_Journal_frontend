@@ -1,0 +1,17 @@
+<header class="app-header">
+  <div class="container header-inner">
+    <a class="brand" routerLink="/journal" aria-label="JournalApp dashboard">
+      <span class="brand-mark" aria-hidden="true">✦</span>
+      <span>JournalApp</span>
+    </a>
+    <nav class="header-actions" aria-label="Account navigation">
+      @if (userName) {
+        <span class="welcome">Hello, {{ userName }}</span>
+      }
+      <button class="icon-button" type="button" (click)="toggleTheme()" [attr.aria-label]="isDark ? 'Use light theme' : 'Use dark theme'">
+        <span aria-hidden="true">{{ isDark ? '☀' : '☾' }}</span>
+      </button>
+      <button class="button button-ghost" type="button" (click)="logout()">Log out</button>
+    </nav>
+  </div>
+</header>

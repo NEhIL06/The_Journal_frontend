@@ -1,0 +1,38 @@
+<app-header />
+<div class="page-shell container">
+  <section class="dashboard-heading">
+    <div>
+      <span class="eyebrow">Your private space</span>
+      <h1>My journal</h1>
+      <p>{{ greeting || 'What would you like to remember today?' }}</p>
+    </div>
+    <a class="button button-primary" routerLink="/journal/new"><span aria-hidden="true">＋</span> New entry</a>
+  </section>
+
+  @if (errorMessage) {
+    <app-status-message type="error" [message]="errorMessage" />
+    <button class="button button-secondary retry-button" type="button" (click)="loadEntries()">Try again</button>
+  }
+  @if (successMessage) { <app-status-message type="success" [message]="successMessage" /> }
+
+  @if (loading) {
+    <div class="card-grid" aria-busy="true" aria-label="Loading journal entries">
+      @for (item of [1, 2, 3]; track item) {
+        <div class="journal-card skeleton-card"><span></span><span></span><span></span></div>
+      }
+    </div>
+  } @else if (!errorMessage && entries.length === 0) {
+    <section class="empty-state">
+      <span class="empty-icon" aria-hidden="true">✎</span>
+      <h2>Your first page is waiting</h2>
+      <p>Capture a thought, a feeling, or one small moment from today.</p>
+      <a class="button button-primary" routerLink="/journal/new">Write your first entry</a>
+    </section>
+  } @else {
+    <section class="card-grid" aria-label="Journal entries">
+      @for (entry of entries; track entry.id) {
+        <app-journal-card [entry]="entry" (deleteRequested)="deleteEntry($event)" [class.is-deleting]="deletingId === entry.id" />
+      }
+    </section>
+  }
+</div>

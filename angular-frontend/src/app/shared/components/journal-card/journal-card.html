@@ -1,0 +1,15 @@
+<article class="journal-card" [class]="'journal-card ' + sentimentClass(entry.sentiment)">
+  <div class="card-topline">
+    <time [attr.datetime]="entry.date">{{ entry.date | date: 'mediumDate' }}</time>
+    @if (entry.sentiment) {
+      <span class="sentiment-pill">{{ entry.sentiment.toLowerCase() }}</span>
+    }
+  </div>
+  <h2><a [routerLink]="['/journal', entry.id]">{{ entry.title || 'Untitled' }}</a></h2>
+  <p>{{ entry.content || 'No content' }}</p>
+  <div class="card-actions">
+    <a class="text-link" [routerLink]="['/journal', entry.id]">Read entry</a>
+    <a class="button button-small button-secondary" [routerLink]="['/journal', entry.id, 'edit']">Edit</a>
+    <button class="button button-small button-danger-ghost" type="button" (click)="deleteRequested.emit(entry)" [attr.aria-label]="'Delete ' + entry.title">Delete</button>
+  </div>
+</article>

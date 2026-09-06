@@ -1,0 +1,10 @@
+<div
+  class="status-message"
+  [class.status-error]="type === 'error'"
+  [class.status-success]="type === 'success'"
+  [attr.role]="type === 'error' ? 'alert' : 'status'"
+  aria-live="polite"
+>
+  <span aria-hidden="true">{{ type === 'error' ? '!' : type === 'success' ? '✓' : 'i' }}</span>
+  <span>{{ message }}</span>
+</div>

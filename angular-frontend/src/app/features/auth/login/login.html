@@ -1,0 +1,45 @@
+<div class="auth-page">
+  <a class="brand auth-brand" routerLink="/">
+    <span class="brand-mark" aria-hidden="true">✦</span><span>JournalApp</span>
+  </a>
+  <section class="auth-card" aria-labelledby="login-title">
+    <div class="auth-heading">
+      <span class="eyebrow">Welcome back</span>
+      <h1 id="login-title">Continue your story</h1>
+      <p>Sign in to return to your journal.</p>
+    </div>
+
+    @if (sessionExpired) {
+      <app-status-message message="Your session expired. Please sign in again." />
+    }
+    @if (errorMessage) {
+      <app-status-message type="error" [message]="errorMessage" />
+    }
+
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <div class="form-field">
+        <label for="userName">Username</label>
+        <input id="userName" type="text" formControlName="userName" autocomplete="username" aria-describedby="username-error" />
+        @if (form.controls.userName.invalid && (submitted || form.controls.userName.touched)) {
+          <span class="field-error" id="username-error">Enter your username.</span>
+        }
+      </div>
+      <div class="form-field">
+        <label for="password">Password</label>
+        <div class="password-field">
+          <input id="password" [type]="showPassword ? 'text' : 'password'" formControlName="password" autocomplete="current-password" aria-describedby="password-error" />
+          <button type="button" class="password-toggle" (click)="showPassword = !showPassword" [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'">
+            {{ showPassword ? 'Hide' : 'Show' }}
+          </button>
+        </div>
+        @if (form.controls.password.invalid && (submitted || form.controls.password.touched)) {
+          <span class="field-error" id="password-error">Enter your password.</span>
+        }
+      </div>
+      <button class="button button-primary button-full" type="submit" [disabled]="loading">
+        @if (loading) { <span class="spinner" aria-hidden="true"></span> Signing in… } @else { Sign in }
+      </button>
+    </form>
+    <p class="auth-switch">New here? <a routerLink="/register">Create an account</a></p>
+  </section>
+</div>

@@ -1,0 +1,25 @@
+<app-header />
+<div class="page-shell container narrow-page">
+  <a class="back-link" routerLink="/journal">← Back to journal</a>
+  @if (loading) {
+    <div class="detail-card editor-loading" role="status"><span class="spinner"></span> Opening entry…</div>
+  } @else if (errorMessage) {
+    <app-status-message type="error" [message]="errorMessage" />
+    <a class="button button-secondary" routerLink="/journal">Return to journal</a>
+  } @else if (entry) {
+    <article class="detail-card">
+      <div class="detail-meta">
+        <time [attr.datetime]="entry.date">{{ entry.date | date: 'fullDate' }}</time>
+        @if (entry.sentiment) { <span class="sentiment-pill">{{ entry.sentiment.toLowerCase() }}</span> }
+      </div>
+      <h1>{{ entry.title }}</h1>
+      <div class="entry-content">{{ entry.content }}</div>
+      <div class="detail-actions">
+        <a class="button button-primary" [routerLink]="['/journal', entry.id, 'edit']">Edit entry</a>
+        <button class="button button-danger-ghost" type="button" (click)="deleteEntry()" [disabled]="deleting">
+          {{ deleting ? 'Deleting…' : 'Delete entry' }}
+        </button>
+      </div>
+    </article>
+  }
+</div>
